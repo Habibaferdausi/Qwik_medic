@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 const MedicineDetails = () => {
   const medicineInfo = useLoaderData();
   const {
+    id,
     imagelink,
     medicinename,
     introduction,
@@ -19,16 +20,23 @@ const MedicineDetails = () => {
     childdose,
     companyname,
     regularunitprice,
+    discount,
+    quantity,
   } = medicineInfo;
 
   const addToFavorites = () => {
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
     if (!favorites.find((medicine) => medicine.medicinename === medicinename)) {
       favorites.push({
+        id,
+        genericname,
         medicinename,
         companyname,
         imagelink,
         regularunitprice,
+        discount,
+        quantity,
+        types,
       });
       localStorage.setItem("favorites", JSON.stringify(favorites));
       Swal.fire({
@@ -45,10 +53,15 @@ const MedicineDetails = () => {
     const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
     if (!cartItems.find((medicine) => medicine.medicinename === medicinename)) {
       cartItems.push({
+        id,
+        genericname,
         medicinename,
         companyname,
         imagelink,
         regularunitprice,
+        discount,
+        quantity,
+        types,
       });
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
       Swal.fire({
