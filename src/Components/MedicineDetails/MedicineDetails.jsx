@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import { FaBeer, FaBookmark, FaCartArrowDown } from "react-icons/fa";
 
 const MedicineDetails = () => {
   const medicineInfo = useLoaderData();
@@ -55,11 +56,11 @@ const MedicineDetails = () => {
           <p>Side Effects:{sideeffect}</p>
 
           <div className="card-actions justify-end">
-            <button className="btn btn-primary" onClick={addToFavorites}>
-              Add to Favorite
+            <button className="btn btn-secondary" onClick={addToFavorites}>
+              Add to Favorite <FaBookmark />
             </button>
             <button className="btn btn-primary" onClick={addToCart}>
-              Add to Cart
+              Add to Cart <FaCartArrowDown></FaCartArrowDown>
             </button>
           </div>
         </div>
