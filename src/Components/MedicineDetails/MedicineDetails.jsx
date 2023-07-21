@@ -1,3 +1,5 @@
+// MedicineDetails.js
+
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 
@@ -16,6 +18,23 @@ const MedicineDetails = () => {
     companyname,
     regularunitprice,
   } = medicineInfo;
+
+  const addToFavorites = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    if (!favorites.find((medicine) => medicine.medicinename === medicinename)) {
+      favorites.push({ medicinename, imagelink, regularunitprice });
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+  };
+
+  const addToCart = () => {
+    const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    if (!cartItems.find((medicine) => medicine.medicinename === medicinename)) {
+      cartItems.push({ medicinename, imagelink, regularunitprice });
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    }
+  };
+
   console.log(medicineInfo);
   return (
     <div>
@@ -28,7 +47,6 @@ const MedicineDetails = () => {
           <h3> Generic Name:{genericname}</h3>
           <p>Power:{power}</p>
           <p>Company Name:{companyname}</p>
-
           <p>Des:{introduction}</p>
           <p>Type: {types}</p>
           <p>Price:{regularunitprice} TK</p>
@@ -37,8 +55,12 @@ const MedicineDetails = () => {
           <p>Side Effects:{sideeffect}</p>
 
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Add to Favorite</button>
-            <button className="btn btn-primary">Add to Cart</button>
+            <button className="btn btn-primary" onClick={addToFavorites}>
+              Add to Favorite
+            </button>
+            <button className="btn btn-primary" onClick={addToCart}>
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>
