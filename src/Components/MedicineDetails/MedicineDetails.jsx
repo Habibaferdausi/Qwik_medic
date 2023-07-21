@@ -24,7 +24,12 @@ const MedicineDetails = () => {
   const addToFavorites = () => {
     const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
     if (!favorites.find((medicine) => medicine.medicinename === medicinename)) {
-      favorites.push({ medicinename, imagelink, regularunitprice });
+      favorites.push({
+        medicinename,
+        companyname,
+        imagelink,
+        regularunitprice,
+      });
       localStorage.setItem("favorites", JSON.stringify(favorites));
       Swal.fire({
         position: "top-end",
@@ -39,7 +44,12 @@ const MedicineDetails = () => {
   const addToCart = () => {
     const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
     if (!cartItems.find((medicine) => medicine.medicinename === medicinename)) {
-      cartItems.push({ medicinename, imagelink, regularunitprice });
+      cartItems.push({
+        medicinename,
+        companyname,
+        imagelink,
+        regularunitprice,
+      });
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
       Swal.fire({
         position: "top-end",

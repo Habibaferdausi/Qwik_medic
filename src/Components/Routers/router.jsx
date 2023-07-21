@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Home/Home";
 import MedicineDetails from "../MedicineDetails/MedicineDetails";
+import FavoriteItems from "../Favourite Items/FavoriteItems";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
           return response.json();
         },
       },
+      {
+        path:'favoriteItems',
+        element:<FavoriteItems></FavoriteItems>
+      }
     ],
   },
 ]);

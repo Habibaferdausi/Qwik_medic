@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = ({ setResults }) => {
   const [input, setInput] = useState("");
@@ -115,7 +116,7 @@ const Navbar = ({ setResults }) => {
         <div className="navbar-end">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Item 1</a>
+              <NavLink to="favoriteItems">Favorite Items</NavLink>
             </li>
             <li tabIndex={0}>
               <details>
