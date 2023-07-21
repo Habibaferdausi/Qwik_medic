@@ -19,13 +19,12 @@ const FavoriteItems = () => {
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   };
   const addToCart = (item) => {
-    // Pass the item as a parameter to the function
     const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
     if (
       !cartItems.find((medicine) => medicine.medicinename === item.medicinename)
     ) {
       cartItems.push({
-        id: item.id, // Make sure "id" is present in the item object
+        id: item.id,
         genericname: item.genericname,
         medicinename: item.medicinename,
         companyname: item.companyname,
