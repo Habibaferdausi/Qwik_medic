@@ -2,7 +2,8 @@
 
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import { FaBeer, FaBookmark, FaCartArrowDown } from "react-icons/fa";
+import { FaBookmark, FaCartArrowDown } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const MedicineDetails = () => {
   const medicineInfo = useLoaderData();
@@ -25,6 +26,13 @@ const MedicineDetails = () => {
     if (!favorites.find((medicine) => medicine.medicinename === medicinename)) {
       favorites.push({ medicinename, imagelink, regularunitprice });
       localStorage.setItem("favorites", JSON.stringify(favorites));
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Added to Favorites Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
@@ -33,6 +41,13 @@ const MedicineDetails = () => {
     if (!cartItems.find((medicine) => medicine.medicinename === medicinename)) {
       cartItems.push({ medicinename, imagelink, regularunitprice });
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Added to Cart Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
